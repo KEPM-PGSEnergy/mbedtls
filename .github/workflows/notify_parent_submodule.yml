@@ -1,0 +1,20 @@
+name: Notify Parent Submodules
+
+on:
+  push:
+    branches: [ v2.24.0 ]
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        repo: [ "KEPM-PGSEnergy/lin_apk_tx_rx", "KEPM-PGSEnergy/lin_upza_dfz" ]
+
+    steps:
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.PAT_ACTIONS }}
+          repository: ${{ matrix.repo }}
+          event-type: update_submodule_event
