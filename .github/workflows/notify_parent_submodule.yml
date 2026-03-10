@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        repo: [ "KEPM-PGSEnergy/lin_apk_tx_rx", "KEPM-PGSEnergy/lin_upza_dfz" ]
+        repo: [ "KEPM-PGSEnergy/lin_apk_tx_rx", "KEPM-PGSEnergy/lin_upza_dfz", "KEPM-PGSEnergy/lin_ars" ]
 
     steps:
       - name: Repository Dispatch
