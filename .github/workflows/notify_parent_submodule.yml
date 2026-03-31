@@ -5,16 +5,9 @@ on:
     branches: [ v2.24.0 ]
 
 jobs:
-  dispatch:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        repo: [ "KEPM-PGSEnergy/lin_apk_tx_rx", "KEPM-PGSEnergy/lin_upza_dfz", "KEPM-PGSEnergy/lin_ars" ]
-
-    steps:
-      - name: Repository Dispatch
-        uses: peter-evans/repository-dispatch@v3
-        with:
-          token: ${{ secrets.PAT_ACTIONS }}
-          repository: ${{ matrix.repo }}
-          event-type: update_submodule_event
+  notify:
+    uses: KEPM-PGSEnergy/github-workflows/.github/workflows/notify-parent-submodules.yml@main
+    with:
+      parent-repos-json: '["KEPM-PGSEnergy/lin_apk_tx_rx", "KEPM-PGSEnergy/lin_upza_dfz", "KEPM-PGSEnergy/lin_ars"]'
+    secrets:
+      pat-token: ${{ secrets.PAT_ACTIONS }}
