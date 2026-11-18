@@ -16,7 +16,7 @@
 #     will be removed as well as this note.
 #
 
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 3.5.1)
 if(TEST_CPP)
     project("mbed TLS" C CXX)
 else()
